@@ -27,6 +27,7 @@ export class SpotifyService {
   authorize() {
     const encodeHeaders = new HttpHeaders();
     encodeHeaders.set("Content-type","application/x-www-form-urlencoded");
+    
     encodeHeaders.set("Authorization","Basic NDNmMjgzNTRlYzY3NGRmMGI0ZTIyNWZhZTQ4N2Q4YjE6MDQyZDBmYTU0MjQ4NGRkZmEyMmMwODIyNDdhNGZhMWU=");
 
     const body = "grant_type=client_credentials";
