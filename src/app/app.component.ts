@@ -17,6 +17,7 @@ export class AppComponent {
   searchTypeList: string[] = ["track", "album", "artist"];
   tableHeaders = [["Song name", "Album", "Artist"], ["Album name", "Artist"], ["Artist name"]];
   selectedHeaders = this.tableHeaders[0];
+  logInDone = false;
 
   constructor(private http: HttpClient, private spotiSearch: SpotifyService, private backService: BackendService) {
 
@@ -27,7 +28,12 @@ export class AppComponent {
     this.searchType = "track";
     //this.spotiSearch.authorize();
     this.getSearches();
-    this.spotiSearch.implicit();
+    if(!this.logInDone) {
+      this.spotiSearch.implicit();
+      this.logInDone = true;
+    }
+
+
   }
 
   search(searchInput, searchType) {
