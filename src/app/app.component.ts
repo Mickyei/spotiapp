@@ -28,12 +28,10 @@ export class AppComponent {
     this.searchType = "track";
     //this.spotiSearch.authorize();
     this.getSearches();
-    if(!this.logInDone) {
-      this.spotiSearch.implicit();
-      this.logInDone = true;
-    }
+  }
 
-
+  login() {
+    this.spotiSearch.implicit();
   }
 
   search(searchInput, searchType) {
