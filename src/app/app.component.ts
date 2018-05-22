@@ -58,6 +58,10 @@ export class AppComponent {
       alert("Search box can't be empty!");
     } else {
       this.backService.post(searchInput.value, selectedType.value);
+      this.recentSearches.push({object : {
+        search: searchInput.value,
+        searchType: selectedType.value
+      }})
     }
 
   }
