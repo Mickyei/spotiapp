@@ -34,7 +34,6 @@ export class SpotifyService {
     const headers = {'Content-Type':'application/x-www-form-urlencoded',"Authorization": "Basic NDNmMjgzNTRlYzY3NGRmMGI0ZTIyNWZhZTQ4N2Q4YjE6MDQyZDBmYTU0MjQ4NGRkZmEyMmMwODIyNDdhNGZhMWU="
      }
     this.http.post("https://accounts.spotify.com/api/token",body,{headers: headers}).subscribe( data => {
-      console.log(data);
       this.TOKEN = data.access_token;
     })
   }
