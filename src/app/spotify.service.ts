@@ -40,7 +40,7 @@ export class SpotifyService {
   }
 
   implicit() {
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URI}&&response_type=token`;
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URI}&response_type=token`;
   }
 
   parseURLHash () {
