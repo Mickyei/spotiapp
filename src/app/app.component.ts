@@ -35,27 +35,32 @@ export class AppComponent {
   }
 
   search(searchInput, searchType) {
-      this.spotiSearch.parseURLHash();
-    if(searchInput.value.trim() === "") {
-      alert("Search box can't be empty!");
-    } else {
-      this.searchType = searchType.value;
-      this.spotiSearch.fetch(searchInput.value, this.searchType).subscribe(data => {
-        console.log(data);
-        if (this.searchType === "track") {
-          this.results = data.tracks.items
-          this.selectedHeaders = this.tableHeaders[0];
 
-        } else if (this.searchType === "album") {
-          this.results = data.albums.items
-          this.selectedHeaders = this.tableHeaders[1];
-        } else if (this.searchType === "artist") {
-          this.selectedHeaders = this.tableHeaders[2];
-          this.results = data.artists.items
+      if(this.spotiSearch.parseURLHash() == undefined) {
+        alert("Log in before searching!");
+      }else {
+        if(searchInput.value.trim() === "") {
+          alert("Search box can't be empty!");
+        } else {
+          this.searchType = searchType.value;
+          this.spotiSearch.fetch(searchInput.value, this.searchType).subscribe(data => {
+            console.log(data);
+            if (this.searchType === "track") {
+              this.results = data.tracks.items
+              this.selectedHeaders = this.tableHeaders[0];
+
+            } else if (this.searchType === "album") {
+              this.results = data.albums.items
+              this.selectedHeaders = this.tableHeaders[1];
+            } else if (this.searchType === "artist") {
+              this.selectedHeaders = this.tableHeaders[2];
+              this.results = data.artists.items
+            }
+
+          });
         }
+      }
 
-      });
-    }
   }
 
   saveSearch(searchInput, selectedType) {
