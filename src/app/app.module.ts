@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     FormsModule,
     HttpClientModule
+
   ],
   providers: [SpotifyService],
   bootstrap: [AppComponent]

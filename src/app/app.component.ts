@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SpotifyService} from "./spotify.service";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,11 +12,12 @@ export class AppComponent {
 
   searchType: string;
   results: Object[];
+
   searchTypeList: string[] = ["track", "album", "artist"];
   tableHeaders = [["Song name", "Album", "Artist"], ["Album name", "Artist"], ["Artist name"]];
   selectedHeaders = this.tableHeaders[0];
 
-  constructor(private http: HttpClient, private spotiSearch: SpotifyService) {
+  constructor(private http: HttpClient, private spotiSearch: SpotifyService, ) {
 
   }
 

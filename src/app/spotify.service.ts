@@ -19,7 +19,8 @@ export class SpotifyService {
 
   fetch(trackName, searchType) {
     let huutist = {"Content-type": "application/json",
-                "Authorization" : "Bearer " + this.TOKEN};
+                "Authorization" : "Bearer " + this.TOKEN,
+    "Access-Control-Allow-Origin": "*"};
     let params = new HttpParams().set("q", trackName).set("type", searchType);
     return this.http.get('https://api.spotify.com/v1/search/', {headers: huutist, params: params});
   }
@@ -27,14 +28,15 @@ export class SpotifyService {
   authorize() {
     const encodeHeaders = new HttpHeaders();
     encodeHeaders.set("Content-type","application/x-www-form-urlencoded");
-    
     encodeHeaders.set("Authorization","Basic NDNmMjgzNTRlYzY3NGRmMGI0ZTIyNWZhZTQ4N2Q4YjE6MDQyZDBmYTU0MjQ4NGRkZmEyMmMwODIyNDdhNGZhMWU=");
 
     const body = "grant_type=client_credentials";
-    const headers = {'Content-Type':'application/x-www-form-urlencoded',"Authorization": "Basic NDNmMjgzNTRlYzY3NGRmMGI0ZTIyNWZhZTQ4N2Q4YjE6MDQyZDBmYTU0MjQ4NGRkZmEyMmMwODIyNDdhNGZhMWU="}
+    const headers = {'Content-Type':'application/x-www-form-urlencoded',"Authorization": "Basic NDNmMjgzNTRlYzY3NGRmMGI0ZTIyNWZhZTQ4N2Q4YjE6MDQyZDBmYTU0MjQ4NGRkZmEyMmMwODIyNDdhNGZhMWU=",
+      "Access-Control-Allow-Origin": '*'}
     this.http.post("https://accounts.spotify.com/api/token",body,{headers: headers}).subscribe( data => {
       console.log(data);
       this.TOKEN = data.access_token;
     })
   }
+
 }
