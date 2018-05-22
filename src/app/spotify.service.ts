@@ -15,7 +15,7 @@ export class SpotifyService {
   CLIENT_ID = "43f28354ec674df0b4e225fae487d8b1";
   CLIENT_SECRET = "042d0fa542484ddfa22c082247a4fa1e";
   TOKEN;
-  REDIRECT_URI = "178.62.105.7:4200"
+  REDIRECT_URI = "http://178.62.105.7:4200/callback"
   constructor(private http: HttpClient) { }
 
   fetch(trackName, searchType) {
