@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {SpotifyService} from "./spotify.service";
 import {FormsModule} from "@angular/forms";
+import {BackendService} from "./backend.service";
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule
 
   ],
-  providers: [SpotifyService],
+  providers: [SpotifyService, BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

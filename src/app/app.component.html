@@ -4,6 +4,7 @@
 <select  #selectedType>
   <option *ngFor="let type of searchTypeList" [value]="type" >{{type}}</option>
 </select>
+<button (click)="saveSearch(searchInput,selectedType)">Save search</button>
 
 <table class="table table-striped">
   <thead>
@@ -32,6 +33,17 @@
 </ng-container>
 
 </tbody>
+</table>
+
+<table class="table table-dark">
+  <thead>
+  <th>Search</th>
+  <th>Type</th>
+  </thead>
+  <tr *ngFor="let search of recentSearches" >
+    <td>{{search.object.search}}</td>
+    <td>{{search.object.searchType}}</td>
+  </tr>
 </table>
 
 
