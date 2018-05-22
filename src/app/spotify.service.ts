@@ -49,6 +49,7 @@ export class SpotifyService {
         function(key, value) { return key===""?value:decodeURIComponent(value) }):{}
 
     this.TOKEN = urlHash.access_token;
+    console.log(this.TOKEN);
   }
 
 
