@@ -25,12 +25,13 @@ export class AppComponent {
   ngOnInit() {
 
     this.searchType = "track";
-    this.spotiSearch.authorize();
+    //this.spotiSearch.authorize();
     this.getSearches();
+    this.spotiSearch.implicit();
   }
 
   search(searchInput, searchType) {
-
+      this.spotiSearch.parseURLHash();
     if(searchInput.value.trim() === "") {
       alert("Search box can't be empty!");
     } else {

@@ -15,6 +15,7 @@ export class SpotifyService {
   CLIENT_ID = "43f28354ec674df0b4e225fae487d8b1";
   CLIENT_SECRET = "042d0fa542484ddfa22c082247a4fa1e";
   TOKEN;
+  REDIRECT_URI = "http://178.62.105.7:4200/"
   constructor(private http: HttpClient) { }
 
   fetch(trackName, searchType) {
@@ -37,5 +38,19 @@ export class SpotifyService {
       this.TOKEN = data.access_token;
     })
   }
+
+  implicit() {
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=${this.CLIENT_ID}&redirect_uri=${this.REDIRECT_URI}&&response_type=token`;
+  }
+
+  parseURLHash () {
+    let search = location.hash.substring(1);
+    let urlHash = search?JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}',
+        function(key, value) { return key===""?value:decodeURIComponent(value) }):{}
+
+    this.TOKEN = urlHash.access_token;
+  }
+
+
 
 }
